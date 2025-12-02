@@ -1,0 +1,56 @@
+/* src/index.css */
+
+/* Task card hover + subtle shadow */
+.task-item {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  border-radius: 8px;
+}
+.task-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(18, 38, 63, 0.08);
+}
+
+/* fade-in for newly added task */
+.fade-in {
+  animation: fadeInUp 420ms ease;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px) scale(.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* status badges custom colors to be more visible */
+.badge-pending { background: #f0ad4e; color: #fff; }
+.badge-progress { background: #17a2b8; color: #fff; }
+.badge-completed { background: #28a745; color: #fff; }
+
+/* radial progress (simple, CSS-only) */
+.radial-progress {
+  --size: 120px;
+  --track: #f1f3f5;
+  --accent: #28a745; /* progress color */
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  position: relative;
+}
+.radial-progress .circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: conic-gradient(var(--accent) var(--pct), var(--track) 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 16px), black calc(100% - 15px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 16px), black calc(100% - 15px));
+}
+.radial-label {
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+}
+
+/* small niceties */
+.search-input { max-width: 360px; }
+.small-muted { color: #6c757d; font-size: .9rem; }
